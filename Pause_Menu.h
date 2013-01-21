@@ -35,9 +35,6 @@ private:
 	
 	int selection;
 
-	// these bools track keep track of when the up or down keys are actually being pressed
-	bool key_up_still_pressed;
-	bool key_down_still_pressed;
 
 
 	// SPRITES

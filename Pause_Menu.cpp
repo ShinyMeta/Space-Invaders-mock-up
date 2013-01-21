@@ -20,9 +20,6 @@ Pause_Menu::Pause_Menu(bool* keys0, ALLEGRO_EVENT_QUEUE* event_queue0):
 	keys[KEY_ENTER] = false;
 	keys[KEY_ESCAPE] = false;
 
-	// these bools track keep track of when the up or down keys are actually being pressed
-	key_up_still_pressed = false;
-	key_down_still_pressed = false;
 
 
 	// SPRITES
@@ -129,25 +126,18 @@ void Pause_Menu::timerEvent(){
 
 //functions to move the menu selection
 void Pause_Menu::moveButtons(){
-	//if key was just pressed, then move button and update still_pressed bools
-	//if key was just released, then update still_pressed bools
+	//if key was just pressed, then move button and clear key
 	
 	//key up
-	if (keys[KEY_UP] && !key_up_still_pressed){
+	if (keys[KEY_UP]){
 		menuUp();
-		key_up_still_pressed = true;
-	}
-	else if (!keys[KEY_UP] && key_up_still_pressed){
-		key_up_still_pressed = false;
+		keys[KEY_UP] = false;
 	}
 	
 	//key down
-	if (keys[KEY_DOWN] && !key_down_still_pressed){
+	if (keys[KEY_DOWN]){
 		menuDown();
-		key_down_still_pressed = true;
-	}
-	else if (!keys[KEY_DOWN] && key_down_still_pressed){
-		key_down_still_pressed = false;
+		keys[KEY_DOWN] = false;
 	}
 }
 

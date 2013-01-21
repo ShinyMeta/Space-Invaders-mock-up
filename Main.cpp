@@ -152,7 +152,7 @@ bool startAllegro ( int width0, int height0, ALLEGRO_DISPLAY** display0, ALLEGRO
 
 void nextState(){
 
-	State* state;
+	State* state = NULL;
 	switch(current_state){
 
 	case TITLE:
@@ -179,6 +179,7 @@ void nextState(){
 	if (state != NULL){
 		current_state = state->StateFunction();
 		delete state;
+		state = NULL;
 	}
 
 }
